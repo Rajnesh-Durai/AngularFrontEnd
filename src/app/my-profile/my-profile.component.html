@@ -1,0 +1,70 @@
+<div class="flex1">
+    <div class="box">
+        <div class="pad">
+            <div class="mile">Your Profile</div>
+            <div>
+                <div class="flex">
+                    <div >
+                        <img class="circle" src="../../assets/Images/{{doctorlist.doctorName}}.jpg">
+                    </div>
+                    <div>
+                        <div class="flex2">
+                            <div><input class="commanIn" value="Name: {{doctorlist.doctorName}}" disabled></div>
+                            <div><input class="commanIn" value="Specialization: {{doctorlist.specialization}}" disabled></div>
+                            <div><input class="commanIn" value="Experience : {{doctorlist.yearsOfExperience}} years" disabled></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex">
+                    <div><input value="EmailId: {{doctorlist.emailId}}" disabled></div>
+                    <div><input value="EducationLevel: {{doctorlist.educationLevel}}" disabled></div>
+                </div>
+                <div class="flex">
+                    <div><input value="Contact no: {{doctorlist.phoneNumber}}" disabled></div>
+                    <div><input value="Location: {{doctorlist.location}}" disabled></div>
+                </div>
+            </div>
+            <div class="flex3">
+                <div><button class="butn2" (click)="openPopup2()">Edit</button></div>
+            </div>
+        </div>   
+    </div>
+    <!-- Update -->
+    <div class="dialog-box" id="popupu">
+        <img [src]="tick" />
+        <i class="fa fa-xmark fa-lg"
+          (click)="closePopupUp()"></i>
+          <h2>Enter Details to Update</h2>
+          <form>
+            <div>
+                <input id="prdtId" name="prdtId" value="{{doctorlist.doctorName}}"  [(ngModel)]="prdtlist.doctorName" [ngModelOptions]="{standalone: true}"  placeholder="Name">
+            </div>
+            <div>
+                <input id="prdtSection" value="{{doctorlist.specialization}}"  [(ngModel)]="prdtlist.specialization" [ngModelOptions]="{standalone: true}" placeholder="Specialization">
+            </div>
+              <div>
+                  <input id="prduct" value="{{doctorlist.yearsOfExperience}} years"  [(ngModel)]="prdtlist.yearsOfExperience" [ngModelOptions]="{standalone: true}" placeholder="Experience">
+              </div>
+              <div>
+                <input id="pric" value="{{doctorlist.emailId}}"  [(ngModel)]="prdtlist.emailId" [ngModelOptions]="{standalone: true}" placeholder="EmailId">
+            </div>
+              <div>
+                  <input id="availableQuan" value="{{doctorlist.educationLevel}}" [(ngModel)]="prdtlist.educationLevel" [ngModelOptions]="{standalone: true}" placeholder="EducationLevel">
+              </div>
+              <div>
+                <input id="availableQuan" value="{{doctorlist.phoneNumber}}" [(ngModel)]="prdtlist.phoneNumber" [ngModelOptions]="{standalone: true}" placeholder="Contact Number">
+            </div>
+            <div>
+                <input id="availableQuan" value="{{doctorlist.location}}" [(ngModel)]="prdtlist.location" [ngModelOptions]="{standalone: true}" placeholder="Location">
+            </div>
+          </form>
+          <button class="cbtn" (click)="UpdatePrdtById()">Submit</button>
+      </div>
+      <div class="dialog-box" id="popupUpdated">
+        <img [src]="tick" />
+        <i class="fa fa-xmark fa-lg"
+          (click)="closePopupUr()"></i>
+        <!-- <i class="fa fa-check" aria-hidden="true"></i> -->
+        <h2>Profile Updated Successfully</h2>
+    </div>
+</div>

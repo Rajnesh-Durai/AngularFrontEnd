@@ -1,0 +1,120 @@
+<body>
+    <img class="img" src="../../assets/Images/img.jpg">
+    <div class="container" [ngClass]="{'right-panel-active': isRightPanelActive}">
+     <div class="form-container sign-up-container" >
+            <form action="#" [formGroup]="loginForm" (ngSubmit)="onPost()">
+                <h1>Create Account</h1>
+                <br>
+
+                <!-- name -->
+                <input type="text" id="name" name="name" formControlName="name" placeholder="Name" required/>
+                 <div *ngIf="!nameVal?.errors?.['valid'] && (nameVal?.['dirty'] || nameVal?.['touched'])">
+                    <div *ngIf="nameVal?.errors?.['required']">
+                        Enter a Valid name
+                    </div>
+                 </div>
+                
+                 <!-- email -->
+                <input type="email" placeholder="Email" id="email" name="email" formControlName="email" required/>
+                 <div  *ngIf="f['email'].invalid && (f['email'].dirty || f['email'].touched)">
+                    <span *ngIf="f['email'].errors?.['required']">
+                        Email is required  
+                  </span>
+                </div>
+
+                <!-- username -->
+                <input type="text" placeholder="Username" id="username" name="username" formControlName="username" required/>
+                <div class="msg error" *ngIf="f['username'].invalid && (f['username'].dirty || f['username'].touched)">
+                    <span *ngIf="f['username'].errors?.['required']">
+                        Username is required  
+                  </span>
+                </div>
+
+                <!-- role -->
+                <select id="role" name="role" [(ngModel)]="roleName" formControlName="roles" required>
+                    <option value="Select Role">Select Role</option>
+                    <option value="Patient">Patient</option>
+                    <option value="Doctor">Doctor</option>
+                </select>
+
+
+                <!-- password -->
+                <input type="password" name="password" formControlName="password" placeholder="Password" minlength="8" maxlength="20" required/>
+                <div class="msg error" *ngIf="f['password'].invalid && (f['password'].dirty || f['password'].touched)">
+                    <span *ngIf="f['password'].errors?.['required']">
+                        Password is required  
+                  </span>
+                  <span *ngIf="f['password'].errors?.['invalidPattern']">
+                    Atleast 6 character long,must contain 1 uppercase, 1 lowercase, 1 digit and 1 special character
+                </span>
+                </div>
+                
+                <!-- confirm password -->
+                <input type="password" name="confirmPassword" formControlName="confirmPassword" placeholder="Confirm Password" minlength="8" maxlength="20" required/>
+                <div class="msg error" *ngIf="f['confirmPassword'].invalid && (f['confirmPassword'].dirty || f['confirmPassword'].touched)">
+                    <span *ngIf="f['confirmPassword'].errors?.['required']">
+                        ConfirmPassword is required  
+                  </span>
+                  <span *ngIf="f['confirmPassword'].errors?.['mustMatch']">
+                    Password and confirm password should be matched  
+                </span>
+                   </div>
+                <br>
+                <button type="submit" [disabled]="!loginForm.valid" >Sign Up</button>
+                <div class="msg light" *ngIf="status">
+                    {{status.message}}
+                 </div>
+                 <div [ngClass]="{ 'hidden': !showWelcome }">{{outmessage}}</div>
+            </form>
+            
+        </div>
+        <div class="form-container sign-in-container">
+            <form action="#" [formGroup]="loginForm2" (ngSubmit)="OnPost2()">
+                <h1>Sign in</h1>
+                <br><br><br>
+
+                <input type="text" placeholder="Username" id="username" name="username" formControlName="username" required/>
+                <div class="msg error" *ngIf="f1['username'].invalid && (f1['username'].dirty || f1['username'].touched)">
+                    <span *ngIf="f1['username'].errors?.['required']">
+                        Username is required  
+                  </span>
+                </div>
+
+                <input type="password" name="password"  formControlName="password" placeholder="Password" minlength="8" maxlength="20" required/>
+                <div class="msg error" *ngIf="f1['password'].invalid && (f1['password'].dirty || f1['password'].touched)">
+                    <span *ngIf="f1['password'].errors?.['required']">
+                        Password is required  
+                  </span>
+                </div>
+                <br>
+                <button type="submit"  [disabled]="!loginForm2.valid" >Sign In</button>
+                <div class="msg light" *ngIf="status2">
+                    {{status2.message}}
+                </div>
+                <!-- <button type="submit"   [disabled]="!loginForm.valid" (click)="admin()">Sign In</button> -->
+            </form>
+        </div>
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                    <h1>Welcome Back!</h1>
+                    <p>To keep connected with us please login with your personal info</p>
+                    <button class="ghost" (click)="deactivateRightPanel()">Sign In</button>
+                </div>
+                <div class="overlay-panel overlay-right">
+                    <h1>Hello, Friend!</h1>
+                    <p>Enter your personal details and Get your Bookings done</p>
+                    <button class="ghost" (click)="activateRightPanel()" >Sign Up</button>
+                </div>
+            </div>
+        </div>
+        <div class="dialog-box" id="popup">
+            <img [src]="tick" />
+            <i class="fa-solid fa-xmark fa-lg"
+              (click)="closePopup()"></i>
+            <!-- <i class="fa fa-check" aria-hidden="true"></i> -->
+            <h2>Account Created Successfully</h2>
+        </div>
+    </div>
+    
+</body>

@@ -1,0 +1,32 @@
+<div class="containers">
+    <p class="p2">Our Doctors,</p>
+    <div class="flexprop">
+        <div>
+            <p class="p1">Our Pillars</p>
+        </div>
+        <div>
+            <img class="imgsize" src="../../assets/Images/docbg.jpg">
+        </div>
+    </div>
+</div>
+<div class="bggcolor">
+    <div class="containers3">
+        <div class="mile">Our Doctors</div>
+        <div class="box-container">
+            <ng-container *ngFor="let doct of doctorlist">
+            <div class="box ">
+                <div >
+                    <img class="image" src="../../assets/Images/{{doct.doctorName}}.jpg">
+                </div>
+                <div class="comman mar">Name:Dr. {{doct.doctorName}}</div>
+                <div class="comman">Email:{{doct.emailId}}</div>
+                <div class="comman">Specialization:{{doct.specialization}}</div>
+                <div class="comman">Experience:{{doct.yearsOfExperience}} years</div>
+                <div class="comman">EducationLevel:{{doct.educationLevel}}</div>
+                <div class="comman">Contact Number:{{doct.phoneNumber}}</div>
+                <div class="comman pad">Location:{{doct.location}}</div>
+            </div>
+            </ng-container>
+        </div>
+    </div>
+</div>

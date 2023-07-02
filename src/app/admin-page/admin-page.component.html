@@ -1,0 +1,163 @@
+
+
+<div class="imgbg">
+    <div class="containers ">
+      
+        <!-- <h4 class="hot">Fruit Section</h4><br> -->
+        <div class="box-container">
+            <!-- line to write ngFor -->
+                    <div class="box mar">
+                        <img src="../../assets/Images/add.jpg" class="card-img"    alt="...">
+                        <p  class="cbtn" (click)="openPopup()">Add</p>   
+                    </div>
+                    <div class="box">
+                        <img src="../../assets/Images/up.jpg" class="card-img"    alt="...">
+                        <p class="cbtn" (click)="openPopup2()">Update</p>   
+                    </div>
+                    <div class="box">
+                        <img src="../../assets/Images/del1.jpg" class="card-img"    alt="...">
+                        <p class="cbtn" (click)="openPopup3()">Delete</p>  
+                    </div>
+            <!-- repeats -->        
+        </div>
+        <!-- Add -->
+        <div class="dialog-box" id="popup">
+            <img [src]="tick" />
+            <i class="fa fa-xmark fa-lg"
+              (click)="closePopupAdd()"></i>
+            <h2>Enter Details to Add</h2>
+            <form [formGroup]="addgrp">
+                <div>
+                    <input formControlName="doctorName" placeholder="Doctor Name">
+                </div>
+                <div>
+                    <input formControlName="specialization" placeholder="Specialization">
+                </div>
+                <div>
+                    <input formControlName="yearsOfExperience" placeholder="Experience">
+                </div>
+                <div>
+                    <input formControlName="emailId" placeholder="EmailId">
+                </div>
+                <div>
+                    <input formControlName="educationLevel" placeholder="EducationLevel">
+                </div>
+                <div>
+                    <input formControlName="phoneNumber" placeholder="PhoneNumber">
+                </div>
+                <div>
+                    <input formControlName="alternatePhoneNumber" placeholder="Alternate PhoneNumber">
+                </div>
+                <div>
+                    <input formControlName="location" placeholder="Location">
+                </div>
+            </form>
+            <button class="cbtn" (click)="addbtn()">Submit</button>
+        </div>
+        <!-- Update -->
+        <div class="dialog-box" id="popupu">
+            <img [src]="tick" />
+            <i class="fa fa-xmark fa-lg"
+              (click)="closePopupUp()"></i>
+              <h2>Enter Details to Update</h2>
+              <form>
+                <div>
+                    <input id="doctorName" name="doctorName" [(ngModel)]="prdtlist.doctorName" [ngModelOptions]="{standalone: true}" placeholder="Doctor Name">
+                </div>
+                <div>
+                    <input id="specialization" [(ngModel)]="prdtlist.specialization" [ngModelOptions]="{standalone: true}" placeholder="Specialization">
+                </div>
+                  <div>
+                      <input id="yearsOfExperience" [(ngModel)]="prdtlist.yearsOfExperience" [ngModelOptions]="{standalone: true}" placeholder="Experience">
+                  </div>
+                  <div>
+                    <input id="emailId" [(ngModel)]="prdtlist.emailId" [ngModelOptions]="{standalone: true}" placeholder="EmailId">
+                </div>
+                  <div>
+                      <input id="educationLevel" [(ngModel)]="prdtlist.educationLevel" [ngModelOptions]="{standalone: true}" placeholder="EducationLevel">
+                  </div>
+                  <div>
+                    <input id="phoneNumber" [(ngModel)]="prdtlist.phoneNumber" [ngModelOptions]="{standalone: true}" placeholder="PhoneNumber">
+                </div>
+                <div>
+                    <input id="alternatePhoneNumber" [(ngModel)]="prdtlist.alternatePhoneNumber" [ngModelOptions]="{standalone: true}" placeholder="Alternate PhoneNumber">
+                </div>
+                <div>
+                    <input id="location" [(ngModel)]="prdtlist.location" [ngModelOptions]="{standalone: true}" placeholder="Location">
+                </div>
+              </form>
+              <button class="cbtn" (click)="UpdatePrdtById()">Submit</button>
+          </div>
+          <!-- Delete -->
+          <div class="dialog-box" id="popupd">
+              <img [src]="tick" />
+              <i class="fa fa-xmark fa-lg"
+                (click)="closePopupDel()"></i>
+              <h2>Enter the ID to Delete</h2>
+              <form>
+                  <div>
+                      <input [(ngModel)]="Id" [ngModelOptions]="{standalone: true}" placeholder="Doctor ID">
+                  </div>
+              </form>
+              <button class="cbtn" (click)="delbtn()">Submit</button>
+        </div>
+        <h2 class="mile">List of Doctors</h2>
+        
+          
+        <!-- ADDED -->
+        <div class="dialog-box" id="popupAdded">
+            <img [src]="tick" />
+            <i class="fa fa-xmark fa-lg"
+              (click)="closePopupAr()"></i>
+            <!-- <i class="fa fa-check" aria-hidden="true"></i> -->
+            <h2>New Data added Successfully</h2>
+        </div>
+        <!-- UPDATED -->
+        <div class="dialog-box" id="popupUpdated">
+            <img [src]="tick" />
+            <i class="fa fa-xmark fa-lg"
+              (click)="closePopupUr()"></i>
+            <!-- <i class="fa fa-check" aria-hidden="true"></i> -->
+            <h2>Data Updated Successfully</h2>
+        </div>
+        <!-- DELETED -->
+        <div class="dialog-box" id="popupDeleted">
+            <img [src]="tick" />
+            <i class="fa fa-xmark fa-lg"
+              (click)="closePopupDr()"></i>
+            <!-- <i class="fa fa-check" aria-hidden="true"></i> -->
+            <h2>Data Deleted Successfully</h2>
+        </div>
+        
+    </div>
+    <table class="table table-bordered table-responsive">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>DoctorName</th>
+            <th>Specialization</th>
+            <th>Experience</th>
+            <th>EmailId</th>
+            <th>EducationLevel</th>
+            <th>PhoneNumber</th>
+            <th>Alternate PhoneNumber</th>
+            <th>Location</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let p of prodlist">
+            <td>{{p.id}}</td>
+            <td>{{p.doctorName}}</td>
+            <td>{{p.specialization}}</td>
+            <td>{{p.yearsOfExperience}}</td>
+            <td>{{p.emailId}}</td>
+            <td>{{p.educationLevel}}</td>
+            <td>{{p.phoneNumber}}</td>
+            <td>{{p.alternatePhoneNumber}}</td>
+            <td>{{p.location}}</td>
+          </tr>
+        </tbody>
+      </table>
+</div>
+
+

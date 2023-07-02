@@ -1,0 +1,69 @@
+<div class="flex1">
+    <div class="box">
+        <div class="pad">
+            <div class="mile">Appointment Form</div>
+            <form [formGroup]="addgrp">
+                <div class="flex2">
+                    <div>
+                        <input [(ngModel)]="prdtlist.patientName" [ngModelOptions]="{standalone: true}" #iname="ngModel" placeholder="Patient Name" required>
+                        <div>
+                            <span *ngIf="iname.touched && iname.invalid" class="red">
+                                <span *ngIf="iname.errors?.['required']">shouldn't be Empty</span>
+                            </span>
+                        </div>
+                    </div>
+                    <div>
+                        <input  [(ngModel)]="prdtlist.patientAge" [ngModelOptions]="{standalone: true}" #iage="ngModel" placeholder="Patient Age" required>
+                        <div>
+                            <span *ngIf="iage.touched && iage.invalid" class="red">
+                                <span *ngIf="iage.errors?.['required']">shouldn't be Empty</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex2">
+                    <div>
+                        <input  [(ngModel)]="prdtlist.diseaseName" [ngModelOptions]="{standalone: true}" #idis="ngModel"  placeholder="Disease Name" required>
+                        <div>
+                            <span *ngIf="idis.touched && idis.invalid" class="red">
+                                <span *ngIf="idis.errors?.['required']">shouldn't be Empty</span>
+                            </span>
+                        </div> 
+                    </div>
+                    <div><select [(ngModel)]="special" [ngModelOptions]="{standalone: true}"  (change)="getDoctor()">
+                        <option *ngFor="let option of doctorlist" [value]=" option.specialization">{{ option.specialization }}</option>
+                      </select>
+                    </div>
+                </div>
+                <div class="flex2">
+                    <div><select [(ngModel)]="prdtlist.doctorId" [ngModelOptions]="{standalone: true}" (change)="getDoctorId()">
+                        <option *ngFor="let option of doctorlist2" [value]="option.doctorName">{{ option.doctorName }}</option>
+                      </select>
+                    </div>
+                    <div><input [(ngModel)]="prdtlist.appointmentDate" [ngModelOptions]="{standalone: true}" type="date" placeholder="Appointment Date"></div>
+                </div>
+                <div class="flex2">
+                    <div><select [(ngModel)]="prdtlist.appointmentTime" [ngModelOptions]="{standalone: true}">
+                        <option value="9AM to 11AM">9AM to 11AM</option>
+                        <option value="11AM to 1PM">11AM to 1PM</option>
+                        <option value="1PM to 3PM">1PM to 3PM</option>
+                        <option value="3PM to 5PM">3PM to 5PM</option>
+                        <option value="5PM to 7M">5PM to 7M</option>
+                      </select>
+                    </div>
+                    <div><button class="butn2" (click)="addbtn()">Submit</button></div>
+                </div>
+        
+    
+            </form>
+                    </div>
+            </div>  
+                    <!-- ADDED -->
+                    <div class="dialog-box" id="popupAdded">
+                        <img [src]="tick" />
+                        <i class="fa fa-xmark fa-2xl"
+                          (click)="closePopupAr()"></i>
+                        <!-- <i class="fa fa-check" aria-hidden="true"></i> -->
+                        <h2>Appointment Registered Successfully</h2>
+                    </div>
+</div>
