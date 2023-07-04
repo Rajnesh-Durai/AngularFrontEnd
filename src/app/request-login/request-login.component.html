@@ -1,12 +1,23 @@
-<div class="containers martop">
+<div class="containers">
+    <p class="p2">Our Goal,</p>
+    <div class="flexprop">
+        <div>
+            <p class="p1">Treat Patients</p>
+        </div>
+        <div>
+            <img class="imgsize" src="../../assets/Images/appt.jpg">
+        </div>
+    </div>
+</div>
+<div class="containers3 ">
     <ng-container *ngIf="requestList.length!=0">
         <div class="flexprop">
             <div>
                 <p class="head">Request Details</p>
             </div>
-            <div>
-                <button class="cbtn">Remove All</button>
-            </div>
+            <!-- <div>
+                <button (click)="emptyCart()" class="cbtn">Remove All</button>
+            </div> -->
         </div>
         <div class="box-container">
             <ng-container *ngFor="let doct of requestList">
@@ -15,14 +26,16 @@
                     <img class="image" src="../../assets/Images/{{doct.name}}.jpg">
                 </div>
                 <div class="comman mar">Name:{{doct.name}}</div>
-                <div class="comman">Email:{{doct.email}}</div>
+                <div class="comman green">Email:{{doct.email}}</div>
                 <div class="flexprop2">
                     <div class="cur" (click)="Add(doct)"><i class="fa fa-light fa-circle-check fa-2xl" style="color: #09f124;"></i></div>
                     <div class="cur" (click)="removeItem(doct)"><i class="fa fa-circle-xmark fa-2xl" style="color: #fd1808;"></i></div>
                 </div>
             </div>
             </ng-container>
+            
         </div>
+
     
     </ng-container>
     

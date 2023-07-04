@@ -1,3 +1,6 @@
+<div *ngIf="isBackgroundBlurred" class="background blur"></div>
+<div *ngIf="!isBackgroundBlurred" class="background"></div>
+
 <div class="flex1">
     <div class="box">
         <div class="pad">
@@ -5,7 +8,7 @@
             <div>
                 <div class="flex">
                     <div >
-                        <img class="circle" src="../../assets/Images/{{doctorlist.doctorName}}.jpg">
+                        <img class="circle" src="../../assets/Images/{{doctorlist.doctorName}}.jpg" (click)="openPopup()">
                     </div>
                     <div>
                         <div class="flex2">
@@ -29,6 +32,14 @@
             </div>
         </div>   
     </div>
+       
+
+    <!-- <div class="zoom" id="popup">
+        <i class="fa fa-xmark fa-lg"
+        (click)="closePopupAdd()"></i>
+        <img src="../../assets/Images/{{doctorlist.doctorName}}.jpg" alt="" class="zoom-image">
+    </div>
+     -->
     <!-- Update -->
     <div class="dialog-box" id="popupu">
         <img [src]="tick" />
@@ -67,4 +78,10 @@
         <!-- <i class="fa fa-check" aria-hidden="true"></i> -->
         <h2>Profile Updated Successfully</h2>
     </div>
+</div>
+<div class="dialog-box3" id="popup">
+
+    <i class="fa fa-xmark fa-2xl"
+      (click)="closePopupAdd()"></i>
+      <img src="../../assets/Images/{{doctorlist.doctorName}}.jpg" alt="" class="zoom-image">
 </div>

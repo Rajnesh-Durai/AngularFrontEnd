@@ -29,15 +29,65 @@
     position: relative;
     top: 150px;
   }
-  .containers{
-    width: 75%;
-    margin: auto;
-    height: 100vh;
+
+  .flexprop{
+    display: flex;
+    justify-content: space-between;
 }
+.containers{
+    width:75%;
+    margin: auto;
+}
+.widt{
+    width: 38%;
+}
+.imgsize{
+    width:900px ;
+    height: 700px;
+}
+.p2{
+    position: absolute;
+    z-index: 2;
+    top: 200px;
+    left: 190px;
+    font-size: 42px;
+    font-weight: 780;
+    color: #053ba1;
+}
+.p1{
+    position: absolute;
+    z-index: 2;
+    top: 290px;
+    left: 190px;
+    font-size: 36px;
+    font-weight: 780;
+}
+.martop{
+    margin-top: 35px;
+}
+.containers3{
+    width: 70%;
+    margin: auto;
+    margin-bottom: 30px;
+    height: 80vh;
+}
+.box-container{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
+    grid-gap: 1em;
+    margin-top: 10px;
+  
+  }
+
 .head{
     font-size: 28px;
     font-weight: 500;
 }
+.green
+{
+  color: #5993f7;
+}
+
 .box-container{
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
@@ -59,6 +109,10 @@
     text-align: center;
     z-index: 1;
     width: 220px;
+    transition: 0.4s;
+}
+.box:hover{
+  translate: 0px -8px;
 }
 .size{
     width: 160px;
@@ -101,11 +155,39 @@
 
   /* responsive*/
 
+  
+@media screen and (max-width:1280px) {
+  .imgsize
+  {
+      width: 800px;
+      height: 650px;
+  }
+  .p2{
+      left: 140px;
+  }
+  .p1{
+      left: 140px;
+  }
+}
   @media screen and (max-width:1028px) {
     .cartimg
     {
       width: 600px;
       height: 600px;
+    }
+    .imgsize
+    {
+        width: 540px;
+        height: 580px;
+    }
+    .p2{
+        left: 100px;
+        font-size: 32px;
+    }
+    .p1{
+        top: 260px;
+        left: 100px;
+        font-size: 28px;
     }
   }
   @media screen and (max-width:820px) {
@@ -163,6 +245,21 @@
     .containers
     {
       height: 80vh;
+    }
+    .imgsize
+    {
+        width: 280px;
+        height: 340px;
+    }
+    .p2{
+        top: 140px;
+        left: 20px;
+        font-size: 18px;
+    }
+    .p1{
+        top: 170px;
+        left: 20px;
+        font-size: 14px;
     }
   }
   @media screen and (max-width:375px) {

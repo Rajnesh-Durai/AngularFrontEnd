@@ -1,3 +1,14 @@
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  backdrop-filter: blur(0);
+  pointer-events: none;
+  transition: backdrop-filter ;
+}
 .flex1{
     width: 100%;
     height: 100vh;
@@ -8,6 +19,9 @@
     background-position: center;
     background-size: cover;
     opacity: 0.9;
+    z-index: 999;
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: backdrop-filter ;
 }
 .box{
     width: 65%;
@@ -41,6 +55,7 @@
     height: 200px;
     margin-left: 100px;
     border-radius: 2px solid black;
+    cursor: pointer;
 }
 .commanIn
 {
@@ -150,7 +165,55 @@ select{
   .red{
     color: red;
   }
-  
+ 
+  .zoom{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+  }
+  .zoom-image{
+    width:500px;
+    height: 500px;
+    border-radius: 50%;
+    background-color: #053ba1;
+
+    transition: transform 0.4s, top 0.4s;
+  }
+  .open {
+    top: 55%;
+    visibility: visible;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  .dialog-box3 {
+    width: 520px;
+    background-color: transparent;
+    border-radius: 8px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.1);
+    text-align: center;
+    padding: 0 30px 30px;
+    visibility: hidden;
+    transition: transform 0.4s, top 0.4s;
+    z-index: 50000;
+  }
+  .open3 {
+    top: 55%;
+    visibility: visible;
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  .fa:hover
+  {
+    cursor: pointer;
+  }
+
+  .blur {
+    backdrop-filter: blur(5px);
+    background-color: rgba(0, 0, 0, 0.5);
+  }
   /* responsive */
   @media screen and (max-width:1280px) {
     input
@@ -237,6 +300,7 @@ select{
         height: 850px;
     }
   }
+ 
   @media screen and (max-width:380px) {
     input
     {

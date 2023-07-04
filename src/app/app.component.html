@@ -7,31 +7,31 @@
       <div class="curs"  [routerLink]="['/home']">MGM HealthCare</div>
     </div>
     <input type="checkbox" id="nav-check" hidden />
-    <nav *ngIf="isLoggedIn">   
+    <nav >   
       <ul>
-        <li *ngIf="roles==='Patient' || roles=== 'Admin' || roles=== 'Doctor'">
+        <li *ngIf="role==='Patient' || role=== 'Admin' || role=== 'Doctor'">
           <p  [routerLink]="['/home/aboutus']" >About Us</p>
         </li>
-        <li *ngIf="roles !== 'Doctor' && (roles === 'Patient' || roles === 'Admin')">
+        <li *ngIf="role !== 'Doctor' && (role === 'Patient' || role === 'Admin')">
           <p  [routerLink]="['/home/doctors']">Our Doctors</p>
         </li>
-        <li *ngIf="roles !== 'Doctor' && (roles === 'Admin')">
+        <li *ngIf="role !== 'Doctor' && (role === 'Admin')">
           <p  [routerLink]="['/home/admin']" >Admin</p>
         </li>
-        <li *ngIf="roles !== 'Doctor' && (roles === 'Patient' || roles === 'Admin')">
+        <li *ngIf="role !== 'Doctor' && (role === 'Patient' || role === 'Admin')">
           <p  [routerLink]="['/home/booknow']">Book Now</p>
         </li>
-        <li *ngIf="roles==='Doctor'">
-          <p  [routerLink]="['/home/MyProfile']"><span><i class="fa fa-circle-user fa-xl "></i></span></p>
+        <li *ngIf="role==='Doctor'">
+          <p  [routerLink]="['/home/MyProfile']"><span><i class="fa fa-circle-user fa-xl " style="color: #5993f7;"></i></span></p>
         </li>
-        <li *ngIf="roles=== 'Doctor'">
-          <p  [routerLink]="['/home/appointDetails']"><span><i class="fa fa-envelope fa-shake fa-xl" style="--fa-primary-color: #044cc8; --fa-secondary-color: #558dec;"></i></span> <span class="tot">{{totalItem2}}</span></p>
+        <li *ngIf="role=== 'Doctor'">
+          <p  [routerLink]="['/home/appointDetails']"><span><i class="fa fa-envelope fa-shake fa-xl" style="color: #5993f7;"></i></span> <span class="tot">{{totalItem2}}</span></p>
         </li>
-        <li *ngIf="roles==='Admin'">
+        <li *ngIf="role==='Admin'">
           <p [routerLink]="['/home/requestLogin']"  class="cbg"><span><i class="fa fa-bell fa-shake fa-xl" style="color: #5993f7;"></i></span> <span class="tot">{{totalItem}}</span></p>
         </li>
         <li>
-          <p (click)="logout()" >Logout</p>
+          <p *ngIf="role==='Patient' || role=== 'Admin' || role=== 'Doctor'" (click)="logout()" >Logout</p>
       </li>
       </ul>
     </nav>
@@ -42,7 +42,7 @@
     </label>
   </div>
 </header>
-<router-outlet (activate)="checkLoggedInUser()"></router-outlet>
+<router-outlet ></router-outlet>
 <!-- <app-admin/> -->
 <footer class="foot">
     <div class="containers">
@@ -53,7 +53,7 @@
                 </p>
                 <div>
                     <p>About Us</p>
-                    <p>Delivery Information</p>
+                    <p>Hospital Information</p>
                     <p>Privacy Policy</p>
                     <p>Terms & Condition</p>
                 </div>
@@ -65,7 +65,7 @@
                 <div>
                     <p>MGM Hospital</p>
                     <p>Chennai, Tamilnadu</p>
-                    <p>order@grny.in</p>
+                    <p>mgm@org.in</p>
                     <p>(+91) 94444 44105</p>
                 </div>
             </div>

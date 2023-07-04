@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { DoctorAppointmentService } from '../service/doctor-appointment.service';
 import { ApiService } from '../service/api.service';
 
 @Component({
@@ -14,23 +13,20 @@ export class MyProfileComponent {
   public docName:any
   public doctorlist:any
 
-  constructor(private appoint:DoctorAppointmentService,private api:ApiService){}
+  constructor(private api:ApiService){}
   ngOnInit(): void {
-    this.appoint.getDoctor().subscribe(res=>{
-      this.appt=res
-      console.log(this.appt)
-      this.arraylength=this.appt.length
-      this.docName=this.appt[this.arraylength-1]?.username || '';
-      console.log(this.docName)
+  // Retrieve docName from localStorage
+  const storedDocName = localStorage.getItem('name');
 
-      this.api.getDoctProfile(this.docName).subscribe(
-        res=>{
-          this.doctorlist=res;
-          console.log(this.doctorlist)
-        }
-      )
-      })
+   if (storedDocName) {
+      this.docName=storedDocName
 
+      this.api.getDoctProfile(this.docName).subscribe(res => {
+        this.doctorlist = res;
+        console.log(this.doctorlist);
+      });
+
+  }
   }
 
   
@@ -41,7 +37,7 @@ prdtlist:any={ doctorName :'', specialization :'', yearsOfExperience : '', email
 
 
 public UpdatePrdtById(){
-  console.log(56458)
+  console.log(56458);
   return this.api.update(this.prdtlist,this.doctorlist.doctorName)
   .subscribe( result =>
     {
@@ -49,14 +45,8 @@ public UpdatePrdtById(){
       let popup = document.getElementById('popupUpdated');
       popup?.classList.add('open');
 
-      this.api.getDoctProfile(this.docName).subscribe(
-        res=>{
-          this.doctorlist=res;
-          console.log(this.doctorlist)
-        })
-
-    }
-    );
+      window.location.reload();
+});
 }
 closePopupUr() {
   let popup = document.getElementById('popupUpdated');
@@ -64,6 +54,8 @@ closePopupUr() {
 }
 
 openPopup2() {
+
+
   let popup = document.getElementById('popupu');
   popup?.classList.add('open');
 }
@@ -72,5 +64,24 @@ closePopupUp() {
   let popup = document.getElementById('popupu');
   popup?.classList.remove('open');
 }
-tick:string='assets/Images/check.png'
+tick:string='assets/Images/check.png';
+
+//zoom
+
+isBackgroundBlurred: boolean=false;
+openPopup() {
+  let popup = document.getElementById('popup');
+  popup?.classList.add('open3');
+  this.isBackgroundBlurred = !this.isBackgroundBlurred;
+}
+closePopupAdd() {
+  let popup = document.getElementById('popup');
+  popup?.classList.remove('open3');
+  this.isBackgroundBlurred = !this.isBackgroundBlurred;
+}
+
+
+
+
+
 }

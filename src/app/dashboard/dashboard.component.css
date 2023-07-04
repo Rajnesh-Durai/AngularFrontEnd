@@ -4,9 +4,10 @@
 .welcome
 {
     width: 240px;
-    border-radius: 20px;
-    background-color: #a6c81a;
-    color: white;
+    border-radius: 30px;
+    border: 1px solid #1b78c6;
+    background-color: #f3fbfe;
+    color: #053ba1;
     display: flex;
     justify-content: center;
     align-items: center;

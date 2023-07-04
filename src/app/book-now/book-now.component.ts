@@ -8,7 +8,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
   styleUrls: ['./book-now.component.css']
 })
 export class BookNowComponent implements OnInit {
-options:any
+options:any;
 doctorlist!:any;
 special!:string
 doctorlist2!:any;
@@ -24,28 +24,29 @@ ngOnInit(): void {
 
 private Doctors():void{
   this.api.getallDoctor().subscribe(res=>{
-    this.doctorlist=res
-    console.log("List of doctors")
+    this.doctorlist=res;
+    console.log("List of doctors");
   })
 }
+
 public getDoctor():void{
-  console.log(this.special)
+  console.log(this.special);
   this.api.getdoct(this.special).subscribe(res=>{
-    this.doctorlist2=res
-    console.log("List of doctors")
+    this.doctorlist2=res;
+    console.log("List of doctors");
   })
 }
 
 ans:any
 public getDoctorId():void
 {
-  console.log(this.prdtlist.doctorId)
+  console.log(this.prdtlist.doctorId);
   for(let i=0;i<this.doctorlist2.length;i++)
   {
     if(this.doctorlist2[i].doctorName === this.prdtlist.doctorId)
     {
       this.ans=this.doctorlist2[i].id;
-      console.log(this.ans)
+      console.log(this.ans);
       break;
     }
   }
@@ -54,18 +55,23 @@ public getDoctorId():void
 }
 
 
-tick:string='assets/Images/check.png'
+tick:string='assets/Images/check.png';
 
-prdtlist:any={ patientName :'', patientAge :'', diseaseName : '', doctorId :'', appointmentDate :'', appointmentTime :''}
+prdtlist:any={ patientName :'', patientAge :'', diseaseName : '', doctorDetailsId :'', appointmentDate :'', appointmentTime :''}
+
+
 
 public addbtn():void
 {
-  this.prdtlist.doctorId=this.ans;
-  console.log(this.prdtlist)
+  this.prdtlist.doctorDetailsId=this.ans;
+  console.log(this.prdtlist);
   this.api.postBook(this.prdtlist).subscribe(res=>{
       let popup = document.getElementById('popupAdded');
       popup?.classList.add('open');  
   })
+
+
+
 }
 closePopupAr() {
   let popup = document.getElementById('popupAdded');
