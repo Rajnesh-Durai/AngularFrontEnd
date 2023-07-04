@@ -1,0 +1,60 @@
+.flex1{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("../../assets/Images/4660894_2456051.jpg");
+    background-position: center;
+    background-size: 100% 170vh;
+    background-repeat: no-repeat;
+    background-color: #f3fbfe;
+    opacity: 0.9;
+    z-index: 999;
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: backdrop-filter ;
+}
+.box{
+    width: 33%;
+    height: 300px;
+    background-color: #f3fbfe;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    position: relative;
+    opacity: 0.95;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.butn2{
+    margin-top: 10px;
+        border: none;
+        background-color: #a6c81a;
+        color: white;
+        height: 40px;
+        width: 160px;
+        border-radius: 25px;
+        font-weight: 500;
+        font-size: 18px;
+        transition: .4s;
+    }
+    .butn2:hover{
+        translate: 0px -4px;
+    }
+
+    .mile{
+    
+        text-align: center;
+        font-size: 36px;
+        font-weight: 700;
+        color: #053ba1;
+        margin-bottom: 30px;
+    }
+    .miles{
+    
+        text-align: center;
+        font-size: 42px;
+        font-weight: 700;
+        color: #053ba1;
+        margin-bottom: 30px;
+    }
