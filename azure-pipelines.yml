@@ -24,5 +24,4 @@ steps:
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact'
   inputs:
-    PathtoPublish: '$(System.DefaultWorkingDirectory)/bin/elements/*'
     ArtifactName: HospitalManagement
